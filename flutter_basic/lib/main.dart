@@ -10,28 +10,35 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("App Row and Column"),
+          title: Text("App Widget Container")
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("Text 1"),
-            Text("Text 2"),
-            Text("Text 3"),
-            Text("Text 4"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Text("Text 5"),
-                Text("Text 6"),
-                Text("Text 7"),
-                Text("Text 8"),
-              ],
-            )
-          ],
-          
-        )
+        body: Container(
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(20),
+          // ),
+          decoration: BoxDecoration(
+            color: Colors.cyan,
+            borderRadius: BorderRadius.circular(20)
+          ),
+          margin: EdgeInsets.all(10),
+          padding: EdgeInsets.all(20),
+          // padding: EdgeInsets.fromLTRB(15, 20, 35, 40),
+          child: Container(
+            // padding: EdgeInsets.only(left: 20, top: 50),
+            // color: Colors.blueAccent,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                colors: <Color>[
+                  Colors.amber,
+                  Colors.blueAccent
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight
+              )
+            ),
+          ),
+        ),
       ),
     );
   }
