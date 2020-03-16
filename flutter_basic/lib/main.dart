@@ -4,42 +4,39 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int number = 0; 
+  void addNumber(){
+    setState(() {
+      ++number;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("App Widget Container")
-        ),
-        body: Container(
-          // decoration: BoxDecoration(
-          //   borderRadius: BorderRadius.circular(20),
-          // ),
-          decoration: BoxDecoration(
-            color: Colors.cyan,
-            borderRadius: BorderRadius.circular(20)
-          ),
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(20),
-          // padding: EdgeInsets.fromLTRB(15, 20, 35, 40),
-          child: Container(
-            // padding: EdgeInsets.only(left: 20, top: 50),
-            // color: Colors.blueAccent,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                colors: <Color>[
-                  Colors.amber,
-                  Colors.blueAccent
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight
-              )
+        appBar: AppBar(title: Text("Statefull Widget Demo"),),
+        body: Center(
+          child: Container(         
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(number.toString(), style: TextStyle(fontSize: 10 + number.toDouble())),
+                RaisedButton(
+                  child: Text("+ Add"),
+                  onPressed: addNumber,
+                )
+              ],
             ),
           ),
         ),
-      ),
+      )
     );
   }
 }
