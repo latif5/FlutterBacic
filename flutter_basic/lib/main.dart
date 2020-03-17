@@ -10,33 +10,34 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int number = 0; 
-  void addNumber(){
-    setState(() {
-      ++number;
-    });
-  }
-
+  String message = "Hi!";
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("Statefull Widget Demo"),),
+        appBar: AppBar(
+          title: Text("Anonymous Method Demo"),
+        ),
         body: Center(
-          child: Container(         
+          child: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(number.toString(), style: TextStyle(fontSize: 10 + number.toDouble())),
+                Text(message),
                 RaisedButton(
-                  child: Text("+ Add"),
-                  onPressed: addNumber,
+                  child: Text("Click Me!"),
+                  onPressed: (){
+                    setState(() {
+                      message = "Hey You!";
+                    });
+                  },
                 )
               ],
             ),
           ),
         ),
-      )
+      ),
     );
   }
 }
