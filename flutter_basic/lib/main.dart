@@ -10,35 +10,45 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<Widget> listWidgets = [];
+  int counter = 0;
+  _MyAppState(){
+    for(int i=0; i <= 10;i++){
+      listWidgets.add(Text("List ke ${i.toString()}", style: TextStyle(fontSize: 30),));
+      counter++;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Text Style"),
-        ),
-        body: Center(
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Hi!",
-                  style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontWeight: FontWeight.w700,
-                      fontSize: 50,
-                      color: Colors.blueAccent,
-                      fontStyle: FontStyle.italic,
-                      decoration: TextDecoration.underline,
-                      decorationColor: Colors.amber,
-                      decorationStyle: TextDecorationStyle.dotted,
-                      decorationThickness: 2),
-                ),
-              ],
-            ),
+        appBar: AppBar(title: Text("List View")),
+        body: Container(
+          child: ListView(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  RaisedButton(child: Text("+ Tambah data"),onPressed: (){
+                      setState(() {
+                        listWidgets.add(Text("List ke ${counter.toString()}", style: TextStyle(fontSize: 30),));
+                        counter++;
+                      });
+                  }),
+                  RaisedButton(child: Text("- Hapus data"),onPressed: (){
+                      setState(() {
+                        listWidgets.removeLast();
+                        counter--;
+                      });
+                  })
+                ],
+              ),
+              
+              Column(children: listWidgets),
+            ],
           ),
+          
         ),
       ),
     );
