@@ -10,29 +10,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String message = "Hi!";
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Anonymous Method Demo"),
+          title: Text("Text Style"),
         ),
         body: Center(
           child: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(message),
-                RaisedButton(
-                  child: Text("Click Me!"),
-                  onPressed: (){
-                    setState(() {
-                      message = "Hey You!";
-                    });
-                  },
-                )
+                Text(
+                  "Hi!",
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 50,
+                      color: Colors.blueAccent,
+                      fontStyle: FontStyle.italic,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.amber,
+                      decorationStyle: TextDecorationStyle.dotted,
+                      decorationThickness: 2),
+                ),
               ],
             ),
           ),
